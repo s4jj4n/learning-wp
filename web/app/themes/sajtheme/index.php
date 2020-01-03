@@ -1,3 +1,4 @@
+<?php get_header(); ?>
 
 <!--<img src="--><?php //echo get_custom_header()->url ?><!--"/>-->
 <?php if ( get_header_image() ) : ?>
@@ -10,3 +11,7 @@
 
 
 <?php get_sidebar( 'primary' ); ?>
+
+<?php get_footer(); ?>
+
+
