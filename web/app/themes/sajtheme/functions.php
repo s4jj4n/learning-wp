@@ -53,13 +53,6 @@ function themename_custom_header_setup() {
 add_action( 'after_setup_theme', 'themename_custom_header_setup' );
 
 
-
-//add_action( 'widgets_init', 'my_register_sidebars' );
-//function my_register_sidebars() {
-//
-//}
-
-
 function theme_widgets_init() {
     require get_template_directory() . '/inc/widgets.php';
     register_widget( 'Foo_Widget' );
@@ -80,3 +73,14 @@ function theme_widgets_init() {
 }
 
 add_action( 'widgets_init', 'theme_widgets_init' );
+
+
+function register_my_menus() {
+    register_nav_menus(
+        array(
+            'header-menu' => __( 'Header Menu' ),
+            'extra-menu' => __( 'Extra Menu' )
+        )
+    );
+}
+add_action( 'init', 'register_my_menus' );

@@ -18,3 +18,12 @@
 <?php wp_body_open(); ?>
 
 
+<header>
+    <?php echo wp_nav_menu(
+        array(
+            'theme_location' => 'header-menu',
+            'fallback_cb' => false
+        )
+    );
+    ?>
+</header>
