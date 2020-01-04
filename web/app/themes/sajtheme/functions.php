@@ -54,8 +54,16 @@ add_action( 'after_setup_theme', 'themename_custom_header_setup' );
 
 
 
-add_action( 'widgets_init', 'my_register_sidebars' );
-function my_register_sidebars() {
+//add_action( 'widgets_init', 'my_register_sidebars' );
+//function my_register_sidebars() {
+//
+//}
+
+
+function theme_widgets_init() {
+    require get_template_directory() . '/inc/widgets.php';
+    register_widget( 'Foo_Widget' );
+
     /* Register the 'primary' sidebar. */
     register_sidebar(
         array(
@@ -70,3 +78,5 @@ function my_register_sidebars() {
     );
     /* Repeat register_sidebar() code for additional sidebars. */
 }
+
+add_action( 'widgets_init', 'theme_widgets_init' );
