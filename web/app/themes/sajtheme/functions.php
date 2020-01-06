@@ -84,3 +84,72 @@ function register_my_menus() {
     );
 }
 add_action( 'init', 'register_my_menus' );
+
+
+/**
+ * Add postMessage support for site title and description for the Theme Customizer.
+ *
+ * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+ */
+function theme_customize_register( $wp_customize ) {
+
+    /* ***************************
+    // Add Social Media Section //
+    *************************** */
+    $wp_customize->add_section(
+        'social-media',
+        array(
+            'title' => __( 'Social Media tets', 'add_setting' ),
+            'priority' => 30,
+            'description' => __( 'Enter the URL to your account for each service for the icon to appear in the header.', 'add_setting' )
+        )
+    );
+
+    // Add Twitter Setting
+    $wp_customize->add_setting( 'twitter', array( 'default' => '' ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'twitter', array(
+        'label' => __( 'Twitter', 'add_setting' ),
+        'section' => 'social-media',
+        'settings' => 'twitter',
+        'type' => 'text'
+    ) ) );
+
+    // Add Facebook Setting
+    $wp_customize->add_setting( 'facebook' , array( 'default' => '' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'facebook', array(
+        'label' => __( 'Facebook', 'add_setting' ),
+        'section' => 'social-media',
+        'settings' => 'facebook',
+        'type' => 'text'
+    ) ) );
+
+    // Add Instagram Setting
+    $wp_customize->add_setting( 'instagram' , array( 'default' => '' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'instagram', array(
+        'label' => __( 'Instagram', 'add_setting' ),
+        'section' => 'social-media',
+        'settings' => 'instagram',
+        'type' => 'text'
+    ) ) );
+
+    // Add LinkedIn Setting
+    $wp_customize->add_setting( 'linkedin' , array( 'default' => '' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'linkedin', array(
+        'label' => __( 'Linkedin', 'add_setting' ),
+        'section' => 'social-media',
+        'settings' => 'linkedin',
+        'type' => 'text'
+    ) ) );
+
+    // Add Social share individual post Setting
+    $wp_customize->add_setting( 'singlepost' , array( 'default' => '' ));
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'singlepost', array(
+        'label' => __( 'Click on the check box to activate the Social Share icon for individual post', 'add_setting' ),
+        'section' => 'social-media',
+        'settings' => 'singlepost',
+        'type' => 'checkbox'
+    ) ) );
+
+
+}
+add_action( 'customize_register', 'theme_customize_register' );
